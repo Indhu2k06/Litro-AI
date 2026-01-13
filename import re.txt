@@ -1,0 +1,40 @@
+import re
+
+# ---- Number normalization ----
+tamil_numbers = {
+    "0": "பூஜ்யம்", "1": "ஒன்று", "2": "இரண்டு", "3": "மூன்று", "4": "நான்கு",
+    "5": "ஐந்து", "6": "ஆறு", "7": "ஏழு", "8": "எட்டு", "9": "ஒன்பது",
+    "10": "பத்து", "100": "நூறு", "1000": "ஆயிரம்"
+}
+
+def normalize_numbers(text: str) -> str:
+    for num, word in tamil_numbers.items():
+        text = re.sub(rf"\b{num}\b", word, text)
+    return text
+
+# ---- Detect Thirukkுறள் request ----
+def detect_thirukkural(query: str) -> int | None:
+    # If user types "திருக்குறள் 133"
+    match = re.search(r"திருக்குறள்\s*(\d+)", query)
+    if match:
+        num = int(match.group(1))
+        if 1 <= num <= 1330:
+            return num
+    return None
+
+# ---- Format couplet (2 lines) ----
+def format_thirukkural(line1: str, line2: str, number: int = None) -> str:
+    header = f"திருக்குறள் {number}\n" if number else ""
+    return f"{header}{line1},\n{line2}"
+
+# ---- Main preprocessing ----
+def preprocess_tamil_text(text: str, query: str = "") -> str:
+    text = text.strip()
+    text = normalize_numbers(text)
+
+    # Soft pauses for readability
+    pause_words = ["ஆனால்", "எனவே", "அதனால்", "அல்லது"]
+    for w in pause_words:
+        text = text.replace(w, w + ", ")
+
+    return text

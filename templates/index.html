@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ta">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>தமிழ் வாசிப்பு — Natural Voice Demo</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* small overrides if you don't want to replace style.css */
+    .container { max-width:800px; margin:24px auto; padding:18px; }
+    textarea { width:100%; height:120px; padding:12px; font-size:18px; border-radius:8px; border:1px solid #ddd; }
+    .controls { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+    button { padding:10px 14px; border-radius:8px; border:none; background:#800000; color:white; cursor:pointer; }
+    .small { font-size:0.9rem; color:#444; margin-top:10px; }
+    .meta { margin-top:12px; background:#faf3f2; padding:12px; border-radius:8px; }
+    .meta pre { white-space:pre-wrap; word-break:break-word; margin:0; font-size:1rem; }
+    .hint { color:#666; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>தமிழ் வாசிப்பு (Natural voice)</h1>
+    <p class="hint">உரை இடவும், பிறகு "Play (Browser TTS)" அல்லது "Play (Server TTS)" அழுத்துங்கள்.</p>
+
+    <textarea id="inputText" placeholder="உங்கள் தமிழ் வாக்கியம் இங்கே...">வணக்கம்! நீங்கள் எப்படி இருக்கின்றீர்கள்?</textarea>
+
+    <div class="controls">
+      <button id="btnBrowser">Play (Browser TTS)</button>
+      <button id="btnServer">Play (Server TTS)</button>
+      <button id="btnPreviewProcessed">Preview processed text (server)</button>
+      <select id="voiceSelect" style="min-width:220px;">
+        <option value="">— Select browser voice (optional) —</option>
+      </select>
+    </div>
+
+    <div class="meta" id="status">
+      <div><strong>Status:</strong> <span id="statusText">idle</span></div>
+      <div style="margin-top:8px"><strong>Processed text / server answer:</strong>
+        <pre id="processedText">—</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

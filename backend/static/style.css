@@ -1,0 +1,9 @@
+body { font-family: sans-serif; background:#fdfaf5; margin:0; display:flex; flex-direction:column; height:100vh; }
+header { text-align:center; padding:1rem; font-size:1.5rem; font-weight:bold; color:#800000; }
+#chat { flex:1; overflow-y:auto; padding:1rem; }
+.msg { margin:0.5rem 0; padding:0.7rem; border-radius:10px; max-width:70%; }
+.user { background:#800000; color:white; margin-left:auto; }
+.bot { background:#f0e0d6; color:black; margin-right:auto; }
+footer { display:flex; padding:1rem; background:#fff; border-top:1px solid #ddd; }
+input { flex:1; padding:0.7rem; border:1px solid #ccc; border-radius:10px; }
+button { margin-left:0.5rem; padding:0.7rem 1rem; border:none; background:#800000; color:white; border-radius:10px; cursor:pointer; }
